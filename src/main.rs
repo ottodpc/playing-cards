@@ -3,13 +3,8 @@ struct Deck {
     cards: Vec<String>,
 }
 
-#[derive(Debug, Clone)]
-struct Card {
-    suit: String,
-    value: String,
-}
-
-fn main() {
+impl Deck {
+    fn new() -> Self {
     // List of "suits"
     let suits: Vec<&str> = vec!["Hearts", "Diamonds", "Clubs", "Spades"];
     //  List of values
@@ -28,11 +23,21 @@ fn main() {
             };
 
             cards.push(card);
-            println!("{:?}", cards);
         }
     }
-    let deck: Deck = Deck { cards: vec![]};
-    println!("Deck: {:?}", deck);
+
+    return Deck { cards: vec![]};
+    }
+}
+
+#[derive(Debug, Clone)]
+struct Card {
+    suit: String,
+    value: String,
+}
+
+fn main() {
+    let deck = Deck::new(); 
     println!("Deck has {} cards", deck.cards.len());
 }
 
